@@ -2,7 +2,6 @@ package com.example.hwdpracainzynierska.roulette.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
