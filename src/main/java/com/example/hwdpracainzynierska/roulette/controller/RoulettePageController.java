@@ -2,7 +2,10 @@ package com.example.hwdpracainzynierska.roulette.controller;
 
 import com.example.hwdpracainzynierska.roulette.model.Roulette;
 import com.example.hwdpracainzynierska.roulette.service.RouletteService;
+import org.apache.coyote.Response;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,8 +18,8 @@ public class RoulettePageController {
     }
 
     @GetMapping("/roulette")
-    public int showResult(){
-        return rouletteService.getOutput();
+    public ResponseEntity<Integer> showResult(){
+        return ResponseEntity.ok(rouletteService.getOutput());
     }
 
 }
