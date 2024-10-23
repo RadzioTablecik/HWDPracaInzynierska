@@ -13,6 +13,6 @@ public class RouletteResponse {
     private String game;
     private String betType;
     private int generatedNumber;
-    private int betValue;
+    private int betVersion;
     private boolean result;
 }

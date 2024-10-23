@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RouletteRequest {
     private String betType;
-    private int betValue;
+    private int betVersion;
 }

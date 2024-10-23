@@ -22,17 +22,17 @@ public class RouletteService {
     public RouletteResponse placeBet(RouletteRequest request){
         int currRandNumber = roulette.getCurrentRandomNumber();
         String betType = request.getBetType();
-        int betValue = request.getBetValue();
+        int betVersion = request.getBetVersion();
         boolean result = false;
         switch (betType){
             case "RedBlack":
-                result = roulette.redBlackBet(currRandNumber, betValue);
+                result = roulette.redBlackBet(currRandNumber, betVersion);
                 break;
             case "Dozen":
-                result = roulette.dozenBet(currRandNumber, betValue);
+                result = roulette.dozenBet(currRandNumber, betVersion);
                 break;
             case "StraightUp":
-                result = roulette.straightUpBet(currRandNumber, betValue);
+                result = roulette.straightUpBet(currRandNumber, betVersion);
                 break;
         }
 
@@ -40,7 +40,7 @@ public class RouletteService {
                 .game("Roulette")
                 .betType(betType)
                 .generatedNumber(currRandNumber)
-                .betValue(betValue)
+                .betVersion(betVersion)
                 .result(result)
                 .build();
     }

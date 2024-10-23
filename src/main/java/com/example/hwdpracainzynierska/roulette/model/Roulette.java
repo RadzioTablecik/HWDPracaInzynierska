@@ -1,6 +1,7 @@
 package com.example.hwdpracainzynierska.roulette.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
@@ -11,13 +12,9 @@ import java.util.ArrayList;
 @Getter
 @Setter
 @Component
+@NoArgsConstructor
 public class Roulette{
     private int currentRandomNumber;
-
-    public Roulette(){
-
-    }
-
 
     @Async
     public void runPrng(
