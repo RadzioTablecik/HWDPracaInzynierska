@@ -17,18 +17,20 @@ public class RouletteController {
     RouletteService rouletteService;
 
     @GetMapping()
-    public ResponseEntity<String> showResult(){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User currUser = (User) authentication.getPrincipal();
+    public ResponseEntity<Integer> showResult(){
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        User currUser = (User) authentication.getPrincipal();
 
-        return ResponseEntity.ok(currUser.getEmail()+ " " + rouletteService.getOutput());
+        return ResponseEntity.ok( rouletteService.getOutput());
     }
 
     @PostMapping()
     public ResponseEntity<RouletteResponse> placeBet(
             @RequestBody RouletteRequest request
     ){
-        return ResponseEntity.ok(rouletteService.placeBet(request));
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User currUser = (User) authentication.getPrincipal();
+        return ResponseEntity.ok(rouletteService.placeBet(request, currUser));
     }
 
 }

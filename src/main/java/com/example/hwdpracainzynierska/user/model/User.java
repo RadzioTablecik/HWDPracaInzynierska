@@ -1,5 +1,6 @@
 package com.example.hwdpracainzynierska.user.model;
 
+import com.example.hwdpracainzynierska.roulette.history.RouletteHistory;
 import com.example.hwdpracainzynierska.user.model.Role;
 import jakarta.persistence.*;
 import lombok.*;
@@ -30,6 +31,8 @@ public class User implements UserDetails {
     private Integer addedBalance;
     @Enumerated(EnumType.STRING)
     private Role role;
+    @OneToMany(mappedBy = "user")
+    private List<RouletteHistory> rouletteHistory;
 
     @Override
     public String getUsername(){
