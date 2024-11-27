@@ -1,6 +1,7 @@
 package com.example.hwdpracainzynierska.roulette.controller;
 
 import com.example.hwdpracainzynierska.roulette.request.RouletteRequest;
+import com.example.hwdpracainzynierska.roulette.response.PrngResponse;
 import com.example.hwdpracainzynierska.roulette.response.RouletteResponse;
 import com.example.hwdpracainzynierska.roulette.service.RouletteService;
 import com.example.hwdpracainzynierska.user.model.User;
@@ -16,12 +17,9 @@ import org.springframework.web.bind.annotation.*;
 public class RouletteController {
     RouletteService rouletteService;
 
-    @GetMapping()
-    public ResponseEntity<Integer> showResult(){
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        User currUser = (User) authentication.getPrincipal();
-
-        return ResponseEntity.ok( rouletteService.getOutput());
+    @GetMapping("/prng")
+    public ResponseEntity<PrngResponse> showResult(){
+        return ResponseEntity.ok(rouletteService.getOutput());
     }
 
     @PostMapping()

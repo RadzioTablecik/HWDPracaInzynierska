@@ -4,6 +4,7 @@ import com.example.hwdpracainzynierska.roulette.history.RouletteHistory;
 import com.example.hwdpracainzynierska.roulette.history.repository.RouletteHistoryRepository;
 import com.example.hwdpracainzynierska.roulette.model.Roulette;
 import com.example.hwdpracainzynierska.roulette.request.RouletteRequest;
+import com.example.hwdpracainzynierska.roulette.response.PrngResponse;
 import com.example.hwdpracainzynierska.roulette.response.RouletteResponse;
 import com.example.hwdpracainzynierska.user.model.User;
 import lombok.AllArgsConstructor;
@@ -11,7 +12,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-
 public class RouletteService {
     private Roulette roulette;
     private RouletteHistoryRepository rouletteHistoryRepository;
@@ -22,8 +22,13 @@ public class RouletteService {
         roulette.runPrng();
     }
 
-    public int getOutput(){
-        return roulette.getCurrentRandomNumber();
+    public PrngResponse getOutput(){
+        int currRandNumber = roulette.getCurrentRandomNumber();
+        return PrngResponse.builder()
+                .game("Roulette")
+                .generatedNumber(currRandNumber)
+                .build();
+
     }
 
     //bet number is specific for every bet type ex. RedBlack, 1 (black)
